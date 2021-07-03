@@ -3,16 +3,27 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const cors = require('cors');
 
+var mongoose = require('mongoose');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var registerRouter = require('./routes/register');
+var authRouter = require('./routes/auth');
+var adminRouter = require('./routes/admin.js');
+
+mongoose.Promise = global.Promise
+
+mongoose.connect('mongodb+srv://admin:<password>@pawrecursodb.4szou.mongodb.net/pawDB', { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(()=> console.log(' connected to DB!'))
+  .catch(()=> console.log(' error connecting to DB!'))
 
 var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
-
+app.set('view engine', 'ejs');
+app.use(cors());
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -20,7 +31,10 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/api/v1/users', usersRouter);
+app.use('/api/v1/register', registerRouter);
+app.use('/api/v1/auth', authRouter);
+app.use('/api/v1/adminadmin', adminRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

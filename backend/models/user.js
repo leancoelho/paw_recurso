@@ -5,6 +5,9 @@ var UserSchema = new mongoose.Schema({
     type: String,
     unique: true
   },
+  nome:{
+      type: String,
+  },
   email: {
     type: String,
     unique: true
