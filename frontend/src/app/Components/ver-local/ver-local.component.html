@@ -74,8 +74,52 @@
                           currentLocal.countdislike
                         }}</mat-list-item>
                         &nbsp;&nbsp;
-                <div class="example-button-row" >
-                  <button
+                        <div *ngFor="let com of currentLocal.comentarios">
+                          <mat-list-item style="color: rgb(255, 255, 255);">
+                            <strong> Comentário:</strong>&nbsp;&nbsp;&nbsp;&nbsp;{{
+                              com
+                            }}</mat-list-item>
+                            &nbsp;&nbsp;
+                        </div>
+                      </form>
+                        <form
+                        class="form"
+                        action="##"
+                        method="post"
+                        id="Form"
+                        (ngSubmit)="updateLocal()"
+                      >
+                        <div class="form-group">
+                          <h4>
+                            <label for="form-comment" style="color: rgb(255, 255, 255);">Adicionar um comentário</label>
+                            <input
+                            type="text"
+                            class="form-control"
+                            name="comment"
+                            id="comment"
+                            placeholder="comment"
+                            title="enter your comentário."
+                            [(ngModel)]="comment"
+                          />
+                          </h4>
+                        </div>
+                        <div class="form-group">
+                          <div class="col-xs-12">
+                            
+                            <button
+                              id="btn1"
+                              class="btn btn-lg btn-success btn-block"
+                              type="submit"
+                            >
+                              Comentar
+                            </button><br /><br />
+                          </div>
+                          </div>
+                        </form>
+                      
+                        <div class="example-button-row" >
+                  
+                    <button
                     mat-raised-button
                     (click)="like()"
                     id="btn1"
@@ -96,7 +140,7 @@
                   </button>
                 </div>
                 <hr />
-              </form>
+              
             </div>
           </div>
         </div>

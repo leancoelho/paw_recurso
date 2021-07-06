@@ -4,6 +4,7 @@ const jwt = require('jsonwebtoken');
 var authconfig = require('../config/authconfig');
 const bcrypt = require('bcryptjs');
 const config = require('../config/authconfig');
+var Local = require("../models/local");
 
 
 var userController = {};
@@ -91,6 +92,21 @@ userController.showById = function (req, res) {
   }
   
   userController.deleteByUsername = function (req, res) {
+    Local.find({}, (err, allLocals) =>{
+      for(var i=0;i<allLocals.length;i++){
+        if(allLocals[i].userID==req.params.userName){
+          var x = allLocals[i]._id;
+          console.log(x);
+          Local.findByIdAndDelete(x,allLocals[i],(err, deletedLocal)=> {
+            if(err) {
+              console.log(err);
+            } else {
+              res.json(deletedLocal);
+            }
+          });
+        }
+      }
+    });
     User.remove({ userName: req.params.userName }).exec((err, deletedUser) => {
       if (err) {
         console.log(err);

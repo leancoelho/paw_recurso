@@ -17,7 +17,7 @@
     <a id:link href="http://localhost:4200/menu">Voltar para o menu</a>
   </div>
   <div *ngFor="let local of locals">
-    <div>
+    <div *ngIf = "local.verifica==true">
       <div class="container" style="margin-top: 30px">
         <div class="col-md-4">
           <div class="modal-dialog" style="margin-bottom: 0">

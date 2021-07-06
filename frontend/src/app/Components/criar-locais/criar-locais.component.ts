@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { User } from 'src/app/model/user';
 import { AuthRestServiceService } from '../../services/auth-rest-service.service';
+import { categoria } from 'src/app/model/categoria';
 
 @Component({
   selector: 'app-criarLocais',
@@ -17,7 +18,10 @@ export class CriarLocaisComponent implements OnInit {
     descricao: new FormControl(null, [Validators.required]),
     imagem: new FormControl(null,[Validators.required]),
     countlike: new FormControl(0),
-    countdislike: new FormControl(0)
+    countdislike: new FormControl(0),
+    verifica: new FormControl(true),
+    category: new FormControl
+    
     });
 
   local: LocalModel = new LocalModel();
@@ -26,8 +30,10 @@ export class CriarLocaisComponent implements OnInit {
   userName:string;
   img:string | undefined;
   erro!:any;
-
-
+  categ=new FormControl();
+  categorias = this.enumSelector(categoria);
+ 
+  
   constructor(
     private auth: AuthRestServiceService,
     private router: Router,
@@ -40,7 +46,6 @@ export class CriarLocaisComponent implements OnInit {
 
   ngOnInit(): void {
     var tempUser = localStorage.getItem('currentUser');
-
     if (tempUser != null) {
       this.userName = JSON.parse(tempUser).userName;
       this.currentUser = JSON.parse(tempUser);
@@ -83,7 +88,12 @@ export class CriarLocaisComponent implements OnInit {
       console.log('formulario invalido');
     } else {
       console.log('na funçao de adicionar local');
-      this.formulario.value["userID"]=this.currentUserID;
+      console.log(this.categ.value);
+      this.formulario.value["verifica"]=true;
+      console.log(this.formulario.value["verifica"]);
+      
+      this.formulario.value["userID"]=this.currentUser.userName;
+      this.formulario.value["category"]=this.categ.value;
       this.rest.createLocal(this.formulario.value).subscribe((local: any) => {
         console.log(local);
         if (local) {
@@ -98,5 +108,9 @@ export class CriarLocaisComponent implements OnInit {
   logout(): void {
     console.log('clicou no logout');
     this.auth.logout();
+  }
+  enumSelector(definition: { [x: string]: any; }) {
+    return Object.keys(definition)
+      .map(key => ({ value: definition[key], title: key }));
   }
 }

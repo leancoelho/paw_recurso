@@ -7,7 +7,7 @@ router.get('/userProfile/:userName', userController.showByUsername);
 
 router.put('/userProfile/edit/:userName', userController.editByUsername);
 
-router.delete('/userProfile/delete/:userName', userController.deleteByUsername, authController.verifyTokenAdmin);
+router.delete('/userProfile/deleteuser/:userName', userController.deleteByUsername);
 
 router.put('/userProfile/edit/:userName', userController.editByUsername, authController.verifyToken);
 

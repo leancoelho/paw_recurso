@@ -16,6 +16,12 @@ import { CriarLocaisComponent } from './Components/criar-locais/criar-locais.com
 import { PerfilComponent } from './Components/perfil/perfil.component';
 import { TodosLocaisComponent } from './Components/todos-locais/todos-locais.component';
 import { VerLocalComponent } from './Components/ver-local/ver-local.component';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatSelectModule} from '@angular/material/select';
+import { MeusLocaisComponent } from './Components/meus-locais/meus-locais.component';
+import { VerMeuLocalComponent } from './Components/ver-meu-local/ver-meu-local.component';
+import { EditarLocalComponent } from './Components/editar-local/editar-local.component';
+
 
 
 @NgModule({
@@ -27,7 +33,10 @@ import { VerLocalComponent } from './Components/ver-local/ver-local.component';
     CriarLocaisComponent,
     PerfilComponent,
     TodosLocaisComponent,
-    VerLocalComponent
+    VerLocalComponent,
+    MeusLocaisComponent,
+    VerMeuLocalComponent,
+    EditarLocalComponent
   ],
   imports: [
     FormsModule,
@@ -38,7 +47,9 @@ import { VerLocalComponent } from './Components/ver-local/ver-local.component';
     BrowserAnimationsModule,
     MatSliderModule,
     MatListModule,
-    MatSidenavModule
+    MatSidenavModule,
+    MatFormFieldModule,
+    MatSelectModule
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorInterceptor, multi:true}],
   bootstrap: [AppComponent]

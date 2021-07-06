@@ -32,7 +32,8 @@
                       placeholder="Titulo"
                     />
                   </h4>
-                </div><br>
+                </div>
+                <br />
                 <div class="form-group">
                   <h4>
                     <label for="form-descricao">Descrição</label>
@@ -43,14 +44,32 @@
                       placeholder="descricao"
                     />
                   </h4>
-                </div><br>
+                </div>
+                <br />
+
+                <mat-form-field appearance="fill">
+                    <mat-label>Escolha a categoria</mat-label>
+                    <mat-select [formControl]="categ">
+                    <mat-option *ngFor="let categoria of categorias" [value]="categoria.value">
+                    {{categoria.title}}
+                    </mat-option>
+                    </mat-select>
+                    </mat-form-field>
+
                 <div class="form-group">
                   <h4>
                     <label for="form-imagem">Imagem</label>
-                    <input type="file" class="form-control" id="imagem" ng-model="vm.imagem"  (change)="onFileChange($event)">
-                    <a *ngIf="erro">{{erro}} </a>
-                  </h4 >
-                </div><br>
+                    <input
+                      type="file"
+                      class="form-control"
+                      id="imagem"
+                      ng-model="vm.imagem"
+                      (change)="onFileChange($event)"
+                    />
+                    <a *ngIf="erro">{{ erro }} </a>
+                  </h4>
+                </div>
+                <br />
                 <div class="registo-button">
                   <button
                     id="btn1"
@@ -70,7 +89,7 @@
                     Cancelar
                   </button>
                 </div>
-              </div>  
+              </div>
             </div>
           </div>
         </div>

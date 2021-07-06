@@ -37,7 +37,8 @@ localController.editByID = function (req, res) {
 };
 
 localController.deleteByID = function (req, res) {
-    Local.findByIdAndDelete(req.params._id, (err, deletedLocal) => {
+    Local.findByIdAndDelete(req.params.id, (err, deletedLocal) => {
+      
         if (err) {
             console.log(err);
         } else {
@@ -73,6 +74,14 @@ localController.like = function (req, res) {
         if (err) {
           console.log(err);
         } else {
+           for(var i=0;i<req.body.countdislike;i++){
+                console.log("entrou");
+                 if(req.body.dislike[i]==req.params.id1){
+                    console.log("entrou");
+                    req.body.dislike.splice(req.params.id1);
+                    req.body.countdislike--;
+            }
+        }
                 for(var i =0;i<req.body.countlike;i++){
                     if(req.body.countlike==0){
                         console.log(req.params.id1);
@@ -107,6 +116,14 @@ localController.dislike = function (req, res) {
         if (err) {
           console.log(err);
         } else {
+            for(var i=0;i<req.body.countlike;i++){
+                
+                 if(req.body.like[i]==req.params.id1){
+                  
+                    req.body.like.splice(req.params.id1);
+                    req.body.countlike--;
+            }
+        }
                 for(var i =0;i<req.body.countdislike;i++){
                     if(req.body.countdislike==0){
                         console.log(req.params.id1);

@@ -40,6 +40,9 @@ export class AuthRestServiceService {
     return this.http.put<any>('http://localhost:3000/api/v1/users/userProfile/edit/' + user.userName, user);
  
   }
+  delete(user:User): Observable<any> {
+    return this.http.delete<User>('http://localhost:3000/api/v1/users/userProfile/deleteuser/' + user.userName);
+  }
 
   getUser(userName: string): Observable<any> {
     return this.http.get<any>(

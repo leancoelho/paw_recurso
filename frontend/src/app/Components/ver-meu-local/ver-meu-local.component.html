@@ -1,0 +1,117 @@
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  </head>
+  
+  <hr />
+  <div class="container bootstrap snippet">
+    <div class="row">
+      <div class="col-sm-10" style="color: rgb(255, 255, 255);"><h1>Local</h1></div>
+      <div align="end">
+        <a id:link href="http://localhost:4200/list"
+          ><h3>{{ currentUser.userName }}</h3>
+        </a>
+      </div>
+      <div align="end" (click)="logout()">
+        <a id:link href="http://localhost:4200/login">Logout</a>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-9">
+        <ul class="nav nav-tabs">
+          <li class="active"></li>
+        </ul>
+        <div *ngIf="currentLocal">
+          <div class="tab-content">
+            <div class="tab-pane active">
+              <hr />
+              <form
+                class="form"
+                action="##"
+                method="get"
+                id="Form"
+                
+              >
+              <mat-list>
+                <mat-list-item style="color: rgb(255, 255, 255);"
+                ><strong> Titulo :</strong>&nbsp;&nbsp;&nbsp;&nbsp;
+                {{
+                 
+                    currentLocal.titulo
+                    }}
+                </mat-list-item>
+
+              <mat-list-item style="color: rgb(255, 255, 255);">
+                <strong> Descrição :</strong>&nbsp;&nbsp;&nbsp;&nbsp;{{
+                  currentLocal.descricao
+                }}</mat-list-item>
+                &nbsp;&nbsp;
+            </mat-list>
+                <body align="center">
+                    <img 
+                    [src]="img"
+                    alt="Image"
+                    id="imgpos"
+                    width="1000px"
+                    height="400px"
+                  />
+                </body>
+                <br /><br />
+                <mat-list-item style="color: rgb(255, 255, 255);">
+                    <strong> Likes:</strong>&nbsp;&nbsp;&nbsp;&nbsp;{{
+                      currentLocal.countlike
+                    }}</mat-list-item>
+                    &nbsp;&nbsp;
+                    <mat-list-item style="color: rgb(255, 255, 255);">
+                        <strong> Dislikes:</strong>&nbsp;&nbsp;&nbsp;&nbsp;{{
+                          currentLocal.countdislike
+                        }}</mat-list-item>
+                        &nbsp;&nbsp;
+                        <div *ngFor="let com of currentLocal.comentarios">
+                          <mat-list-item style="color: rgb(255, 255, 255);">
+                            <strong> Comentário:</strong>&nbsp;&nbsp;&nbsp;&nbsp;{{
+                              com
+                            }}</mat-list-item>
+                            &nbsp;&nbsp;
+                        </div>
+                      </form>
+                       
+                      
+                        <div class="example-button-row" >
+                  
+                    <button
+                    mat-raised-button
+                    (click)="deleteLocal()"
+                    id="btn1"
+                    style="color: rgb(0, 0, 0);"
+                  >
+                    remover</button
+                  >&nbsp;&nbsp;&nbsp;&nbsp;
+                  <button
+                  mat-raised-button
+                  routerLink="//editarlocal//{{currentLocal._id}}"
+                  id="btn1"
+                  style="color: rgb(0, 0, 0);"
+                >
+                  alterar</button
+                >&nbsp;&nbsp;&nbsp;&nbsp;
+                  <button mat-raised-button routerLink="/perfil" id="btn1" style="color: rgb(0, 0, 0);">
+                    Voltar Atrás
+                  </button>
+                </div>
+                <hr />
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

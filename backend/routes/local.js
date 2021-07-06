@@ -13,7 +13,7 @@ router.put("/edit/:id", localController.editByID);
 
 router.post("/createLocal/:id", localController.createLocal);
 
-router.delete("delete/:id", localController.deleteByID);
+router.delete("/delete/:id", localController.deleteByID);
 
 router.put("/like/:id/:id1", localController.like);
 

@@ -1,6 +1,6 @@
 const { ObjectID } = require('bson');
 var mongoose = require('mongoose');
-
+var categoriaEnum = [ "IGREJA", "PAISAGEM" ,"PARQUE" , "PRAIA","MONUMENTO"];
 var LocalSchema = new mongoose.Schema({
     userID: {
         type: String
@@ -24,7 +24,12 @@ var LocalSchema = new mongoose.Schema({
         type: [String]
     },
     countlike: Number,
-    countdislike: Number
+    countdislike: Number,
+    categoria:  {
+        type: String,
+        //enum: categoriaEnum,
+    },
+    verifica: Boolean
 
 });
 

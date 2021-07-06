@@ -58,5 +58,19 @@ export class PerfilComponent implements OnInit {
       }
     });
   }
+
+  deleteUser(){
+    console.log(this.currentUser);
+    
+    this.rest.delete(this.currentUser).subscribe((currentUser: any) => {
+    if (currentUser) {
+      console.log(currentUser);
+      this.router.navigate(['/login']);
+    } else {
+      alert('Erro na remoção!');
+    }
+  });
+
+  }
 }
 

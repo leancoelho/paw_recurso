@@ -1,0 +1,101 @@
+<link
+  href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"
+  rel="stylesheet"
+  id="bootstrap-css"
+/>
+<div>
+  <form [formGroup]="formulario" (ngSubmit)="updateLocal()">
+    <div class="container" style="margin-top: 30px">
+      <div align="end">
+        <a id:link href="http://localhost:4200/perfil"
+          ><h3>{{ currentUser.userName }}</h3></a
+        >
+      </div>
+      <div align="end" (click)="logout()">
+        <a id:link href="http://localhost:4200/login">Logout</a>
+      </div>
+      <div class="col-md-4">
+        <div class="modal-dialog" style="margin-bottom: 0">
+          <div class="modal-content">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h2 class="panel-title"><strong>Editar Local </strong></h2>
+              </div>
+              <div class="panel-body">
+                <div class="form-group">
+                  <h4>
+                    <label for="form-titulo">Titulo</label>
+                    <input
+                      type="text"
+                      formControlName="titulo"
+                      class="form-control"
+                      placeholder="Titulo"
+                      [(ngModel)]="currentLocal.titulo"
+                    />
+                  </h4>
+                </div>
+                <br />
+                <div class="form-group">
+                  <h4>
+                    <label for="form-descricao">Descrição</label>
+                    <input
+                      type="text"
+                      formControlName="descricao"
+                      class="form-control"
+                      placeholder="descricao"
+                      [(ngModel)]="currentLocal.descricao"
+                    />
+                  </h4>
+                </div>
+                <br />
+
+                <mat-form-field appearance="fill">
+                    <mat-label>Escolha a categoria</mat-label>
+                    <mat-select [formControl]="categ">
+                    <mat-option *ngFor="let categoria of categorias" [value]="categoria.value">
+                    {{categoria.title}}
+                    </mat-option>
+                    </mat-select>
+                    </mat-form-field>
+
+                <div class="form-group">
+                  <h4>
+                    <label for="form-imagem">Imagem</label>
+                    <input
+                      type="file"
+                      class="form-control"
+                      id="imagem"
+                      ng-model="vm.imagem"
+                      (change)="onFileChange($event)"
+                    />
+                    <a *ngIf="erro">{{ erro }} </a>
+                  </h4>
+                </div>
+                <br />
+                <div class="registo-button">
+                  <button
+                    id="btn1"
+                    class="btn btn-lg btn-success btn-block"
+                    href=""
+                    type="submit"
+                  >
+                    Salvar
+                  </button>
+                  <button
+                    id="btn1"
+                    href=""
+                    type="submit"
+                    class="btn btn-lg btn-primary btn-block"
+                    routerLink="///vermeulocal/{{currentLocal._id}}"
+                  >
+                    Cancelar
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

@@ -15,11 +15,13 @@ export class VerLocalComponent implements OnInit {
   currentUser: User;
   userName : string;
   img: any;
+  comment: string;
 
   constructor(private router: Router, private route: ActivatedRoute, private rest: LocalRestServiceService,private auth: AuthRestServiceService) {
    // this.currentLocal = new LocalModel();
     this.currentUser = new User();
     this.userName = '';
+    this.comment='';
 }
 
   ngOnInit(): void {
@@ -47,27 +49,12 @@ export class VerLocalComponent implements OnInit {
     })
   }
 
- /*listLocal(): void {
-    console.log('chegou aqui');
-      if (this.currentLocal) {
-            console.log(this.currentLocal);
-            console.log(this.Locals);
-
-            this.rest.getLocal(this.b.eventID).subscribe((evento: any) => {
-              //como é apenas para listar
-              this.b.eventName= evento.eventName; 
-              
-              this.Locals.push(this.b);
-            });
-        this.router.navigate(['/']);
-      } else {
-        alert('Erro na listagem!');
-      }
-    
-  }*/
 
   updateLocal(): void {
     console.log("chegou aqui");
+    
+    this.currentLocal.comentarios[this.currentLocal.comentarios.length]=this.comment;
+    
     this.rest.editLocal(this.currentLocal)
     .subscribe((currentLocal: any) => {
       if (this.currentLocal) {
@@ -94,33 +81,58 @@ export class VerLocalComponent implements OnInit {
 
     });
     console.log(this.currentLocal);
-    
+    var boo : boolean = false;
     for(var i=0; i<this.currentLocal.countlike;i++){
       if(this.currentLocal.like[i]==this.currentUser.userName){
+        boo = true;
         alert("Já deu like");
         //this.load();
       }
     }
+    
+    if(boo==false){
     this.rest.likeLocal(this.currentLocal, this.currentUser)
     .subscribe((currentLocal: any) => {
       if (this.currentLocal) {
+        if((this.currentLocal.countlike/this.currentLocal.countdislike)<0.5 && (this.currentLocal.countlike+this.currentLocal.countdislike)>4){
+          this.currentLocal.verifica=false;
+        }
         this.load();
       } else {
         alert('Erro no like!');
       }
     });
+  }
   });
 }
 
   dislike(): void{
-    this.rest.dislikeLocal(this.currentLocal, this.currentUser)
-    .subscribe((currentLocal: any) => {
-      if (this.currentLocal) {
-        this.load();
-      } else {
-        alert('Erro no dislike!');
+    this.route.params.subscribe(params =>{
+      this.rest.getLocal(params.id).subscribe((Local: any)=>{
+        this.currentLocal=Local;
+  
+      });
+      console.log(this.currentLocal);
+      var boo : boolean = false;
+      for(var i=0; i<this.currentLocal.countdislike;i++){
+        if(this.currentLocal.dislike[i]==this.currentUser.userName){
+          alert("Já deu dislike");
+          //this.load();
+          boo=true;
+        }
       }
+      if(boo==false){
+      this.rest.dislikeLocal(this.currentLocal, this.currentUser)
+      .subscribe((currentLocal: any) => {
+        if (this.currentLocal) {
+          this.load();
+        } else {
+          alert('Erro no dislike!');
+        }
+      });
+    }
     });
-  }
 }
 
+
+}
