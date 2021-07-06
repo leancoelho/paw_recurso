@@ -25,12 +25,14 @@ var LocalSchema = new mongoose.Schema({
     },
     countlike: Number,
     countdislike: Number,
-    categoria:  {
+    category:  {
         type: String,
-        //enum: categoriaEnum,
+        enum: categoriaEnum,
     },
-    verifica: Boolean
-
+    verifica: {
+        type:Boolean,
+        default: true
+    }
 });
 
 module.exports = mongoose.model('Local', LocalSchema);

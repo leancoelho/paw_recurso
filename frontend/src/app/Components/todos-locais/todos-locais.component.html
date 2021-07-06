@@ -24,11 +24,18 @@
             <div class="modal-content">
               <div class="panel panel-default">
                 <mat-list>
-                  <mat-list-item
-                    ><strong>Titulo do local :</strong> &nbsp;&nbsp;&nbsp;
+                  <mat-list-item *ngIf ="local.countdislike>local.countlike"
+                    ><strong style="color: rgb(255, 0, 0);">Titulo do local :</strong> &nbsp;&nbsp;&nbsp;
                     {{ local.titulo }}
                   </mat-list-item>
-
+                  <mat-list-item *ngIf ="local.countlike>local.countdislike"
+                    ><strong style="color: rgb(0, 255, 21);">Titulo do local :</strong> &nbsp;&nbsp;&nbsp;
+                    {{ local.titulo }}
+                  </mat-list-item>
+                  <mat-list-item *ngIf ="local.countlike==local.countdislike"
+                    ><strong style="color: rgb(0, 0, 0);">Titulo do local :</strong> &nbsp;&nbsp;&nbsp;
+                    {{ local.titulo }}
+                  </mat-list-item>
                   <mat-list-item><strong> Descrição :</strong>&nbsp;&nbsp;&nbsp;&nbsp;{{local.descricao}}</mat-list-item>
                   <mat-list-item><strong> Likes :</strong>&nbsp;&nbsp;&nbsp;&nbsp;{{local.countlike}}</mat-list-item>
                   <mat-list-item><strong> Dislikes :</strong>&nbsp;&nbsp;&nbsp;&nbsp;{{local.countdislike}}</mat-list-item>

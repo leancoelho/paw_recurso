@@ -6,6 +6,7 @@ import { LoginComponent } from './Components/login/login.component';
 import { MenuComponent } from './Components/menu/menu.component';
 import { MeusLocaisComponent } from './Components/meus-locais/meus-locais.component';
 import { PerfilComponent } from './Components/perfil/perfil.component';
+import { PesquisarComponent } from './Components/pesquisar/pesquisar.component';
 import { RegistarComponent } from './Components/registar/registar.component';
 import { TodosLocaisComponent } from './Components/todos-locais/todos-locais.component';
 import { VerLocalComponent } from './Components/ver-local/ver-local.component';
@@ -21,7 +22,8 @@ const routes: Routes = [
   {path: 'verlocal/:id', component: VerLocalComponent },
   {path: 'meuslocais', component: MeusLocaisComponent },
   {path: 'vermeulocal/:id', component: VerMeuLocalComponent },
-  {path: 'editarlocal/:id', component: EditarLocalComponent },];
+  {path: 'editarlocal/:id', component: EditarLocalComponent },
+  {path: 'pesquisa', component:PesquisarComponent}];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

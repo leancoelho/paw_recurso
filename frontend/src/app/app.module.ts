@@ -21,6 +21,8 @@ import {MatSelectModule} from '@angular/material/select';
 import { MeusLocaisComponent } from './Components/meus-locais/meus-locais.component';
 import { VerMeuLocalComponent } from './Components/ver-meu-local/ver-meu-local.component';
 import { EditarLocalComponent } from './Components/editar-local/editar-local.component';
+import { PesquisarComponent } from './Components/pesquisar/pesquisar.component';
+
 
 
 
@@ -36,7 +38,8 @@ import { EditarLocalComponent } from './Components/editar-local/editar-local.com
     VerLocalComponent,
     MeusLocaisComponent,
     VerMeuLocalComponent,
-    EditarLocalComponent
+    EditarLocalComponent,
+    PesquisarComponent
   ],
   imports: [
     FormsModule,

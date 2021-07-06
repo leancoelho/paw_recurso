@@ -91,12 +91,13 @@ export class VerLocalComponent implements OnInit {
     }
     
     if(boo==false){
+      if((this.currentLocal.countlike/this.currentLocal.countdislike)<0.5 && (this.currentLocal.countlike+this.currentLocal.countdislike)>4){
+        this.currentLocal.verifica=false;
+      }
     this.rest.likeLocal(this.currentLocal, this.currentUser)
     .subscribe((currentLocal: any) => {
       if (this.currentLocal) {
-        if((this.currentLocal.countlike/this.currentLocal.countdislike)<0.5 && (this.currentLocal.countlike+this.currentLocal.countdislike)>4){
-          this.currentLocal.verifica=false;
-        }
+       
         this.load();
       } else {
         alert('Erro no like!');
@@ -122,9 +123,13 @@ export class VerLocalComponent implements OnInit {
         }
       }
       if(boo==false){
+        if((this.currentLocal.countlike/this.currentLocal.countdislike)<0.5 && (this.currentLocal.countlike+this.currentLocal.countdislike)>4){
+          this.currentLocal.verifica=false;
+        }
       this.rest.dislikeLocal(this.currentLocal, this.currentUser)
       .subscribe((currentLocal: any) => {
         if (this.currentLocal) {
+         
           this.load();
         } else {
           alert('Erro no dislike!');
