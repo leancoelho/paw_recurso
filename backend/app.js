@@ -11,10 +11,11 @@ var usersRouter = require('./routes/users');
 var registerRouter = require('./routes/register');
 var authRouter = require('./routes/auth');
 var adminRouter = require('./routes/admin.js');
+var localRouter = require('./routes/local');
 
 mongoose.Promise = global.Promise
 
-mongoose.connect('mongodb+srv://admin:<password>@pawrecursodb.4szou.mongodb.net/pawDB', { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect('mongodb+srv://admin:admin123@pawrecursodb.4szou.mongodb.net/pawDB', { useNewUrlParser: true, useUnifiedTopology: true })
   .then(()=> console.log(' connected to DB!'))
   .catch(()=> console.log(' error connecting to DB!'))
 
@@ -32,8 +33,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/api/v1/users', usersRouter);
-app.use('/api/v1/register', registerRouter);
+app.use('/api/v1/registar', registerRouter);
 app.use('/api/v1/auth', authRouter);
+app.use('/api/v1/local', localRouter);
 app.use('/api/v1/adminadmin', adminRouter);
 
 // catch 404 and forward to error handler

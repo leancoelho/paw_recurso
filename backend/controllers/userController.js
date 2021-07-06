@@ -2,7 +2,9 @@ var mongoose = require("mongoose");
 var User = require("../models/user");
 const jwt = require('jsonwebtoken');
 var authconfig = require('../config/authconfig');
-const user = require("../models/user");
+const bcrypt = require('bcryptjs');
+const config = require('../config/authconfig');
+
 
 var userController = {};
 
@@ -15,14 +17,25 @@ userController.createAccount = function (req, res) {
         res.json({ message: "User is already registered." });
       }
     } else {
-      user.save((err) => {
-        {
-          if (err) {
-            console.log(err);
-          } else {
-            res.json({ registo: true });
-          }
-        }
+      var hashedPassword = bcrypt.hashSync(req.body.password, 8);
+
+      User.create({
+          userName: req.body.userName,
+          nome : req.body.nome || '',
+          email : req.body.email,
+          password : hashedPassword,
+          role: req.body.email || "utilizador"
+      }, 
+      function (err, user) {
+          if (err) return res.status(500).json(err);
+    
+          // if user is registered without errors
+          // create a token
+          var token = jwt.sign({ id: user._id }, config.secret, {
+          expiresIn: 86400 // expires in 24 hours
+          });
+    
+          res.status(200).send({ auth: true, token: token });
       });
     }
   });

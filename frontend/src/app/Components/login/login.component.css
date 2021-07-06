@@ -1,0 +1,40 @@
+.login-form > label,
+.login-form > input {
+  display: block;
+  width: 100%;
+  border-top: 0;
+  border-right: 0px;
+  border-left: 0px;
+  padding: 10px 0px 10px 0px;
+}
+
+.login-form > input:focus {
+  outline: none;
+  
+}
+
+.login-button {
+  display: block;
+  margin: 20px auto;
+  height: 3em;
+  width: 7em;
+
+  padding: 10px 10px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 15px;
+}
+
+.text-center {
+  text-align: center;
+}
+#btn2 {
+  display: inline-block  ;
+  margin-left: 50px;
+  height: 3em;
+  width: 7em;
+  padding: 10px 10px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 15px;
+}

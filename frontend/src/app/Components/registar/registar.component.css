@@ -1,0 +1,62 @@
+.registo-form > label,
+.registo-form > input {
+  display: block;
+  width: 25%;
+  border-top: 0;
+  border-right: 0px;
+  border-left: 0px;
+  padding: 10px 0px 10px 0px;
+}
+
+.registo-form > input:focus {
+  outline: none;
+}
+
+.registo-button {
+  margin: 30px auto;
+  height: 3em;
+  width: 7em;
+
+  padding: 20px 10px;
+  text-align: center;
+  align-items: center;
+  text-decoration: none;
+  font-size: 25px;
+  margin: 10px 20px;
+  cursor: pointer;
+  display: inline;
+}
+
+.text-center {
+  text-align: center;
+}
+
+#btn1 {
+  display: inline-block;
+  margin-right: 50px;
+  height: 3em;
+  width: 7em;
+  padding: 10px 10px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 15px;
+}
+
+#btn2 {
+  display: inline-block  ;
+  margin-left: 50px;
+  height: 3em;
+  width: 7em;
+  padding: 10px 10px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 15px;
+}
+.user {
+  margin: auto;
+  margin-top: 5%;
+  max-width: 400px;
+  text-align: center;
+  border-radius: 15px;
+  margin-bottom: 5%;
+}

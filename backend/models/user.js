@@ -12,8 +12,8 @@ var UserSchema = new mongoose.Schema({
     type: String,
     unique: true
   },
-  password: String,
-  birthDate: { type: Date },
+  password: {type: String},
+  birthDate: {type: Date},
   role: { 
     type: String, 
     default: 'utilizador' 

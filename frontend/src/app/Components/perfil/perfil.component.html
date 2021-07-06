@@ -1,0 +1,156 @@
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  </head>
+  
+  <hr />
+    <div class="row">
+
+     
+      <div class="col-sm-9">
+        <h1 align= 'center' style="color: rgb(255, 255, 255);">Profile</h1>
+  
+        <div class="tab-content">
+          <div class="tab-pane active" id="home">
+            <hr />
+            <form
+              class="form"
+              action="##"
+              method="post"
+              id="Form"
+              (ngSubmit)="updateUser()"
+            >
+              <div class="form-group">
+                <div class="col-xs-6">
+                  <label for="userName"><h4>Nome de utillizador</h4></label>
+                  <input
+                    disabled
+                    type="text"
+                    class="form-control"
+                    name="userName"
+                    id="userName"
+                    placeholder="Nome do Utilizador"
+                    [(ngModel)]="currentUser.userName"
+                  />
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-xs-6">
+                  <label for="nome"><h4>Nome</h4></label>
+                  <input
+                    disabled
+                    type="nome"
+                    class="form-control"
+                    name="nome"
+                    id="nome"
+                    placeholder="Nome"
+                    [(ngModel)]="currentUser.nome"
+                  />
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-xs-6">
+                  <label for="email"><h4>Email</h4></label>
+                  <input
+                    disabled
+                    type="email"
+                    class="form-control"
+                    name="email"
+                    id="email"
+                    placeholder="Email"
+                    [(ngModel)]="currentUser.email"
+                  />
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-xs-6">
+                  <label for="birthDate"><h4>Data de Nascimento</h4></label>
+                  <input
+                    disabled
+                    type="Date"
+                    class="form-control"
+                    name="birthDate"
+                    id="birthDate"
+                    placeholder="Data de nascimento"
+                    [(ngModel)]="currentUser.birthDate"
+                  />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div class="col-xs-6">
+                  <label for="password"><h4>Password</h4></label>
+                  <input
+                    type="password"
+                    class="form-control"
+                    name="password"
+                    id="password"
+                    placeholder="password"
+                    title="enter your password."
+                    [(ngModel)]="password"
+                  />
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-xs-6">
+                  <label for="passwordV"><h4>Verify</h4></label>
+                  <input
+                    type="password"
+                    class="form-control"
+                    name="passwordV"
+                    id="passwordV"
+                    placeholder="passwordV"
+                    title="enter your passwordV."
+                    [(ngModel)]="passwordV"
+                  />
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-xs-12">
+                  <br />
+                  <button
+                    id="btn1"
+                    class="btn btn-lg btn-success btn-block"
+                    type="submit"
+                  >
+                    Salvar
+                  </button>
+                  <button
+                    id="btn1"
+                    href=""
+                    type="submit"
+                    class="btn btn-lg btn-primary btn-block"
+                    routerLink="/menu"
+                  >
+                    Menu
+                  </button>
+                  <button
+                    id="btn1"
+                    href=""
+                    type="submit"
+                    class="btn btn-lg btn-primary btn-block"
+                    routerLink="/"
+                  >
+                    Meus locais
+                  </button>
+                </div>
+              </div>
+            </form>
+  
+            <hr />
+          </div>
+        </div>
+  
+        <!--/col-9-->
+      </div>
+      <!--/row-->
+    </div>
+  
+  

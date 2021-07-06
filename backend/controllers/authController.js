@@ -9,22 +9,23 @@ var authController = {};
 authController.login = function (req, res) {
     console.log("chegou ao controlador");
     User.findOne({ userName: req.body.userName }, function (err, user) {
-
-        if (err) return res.status(500).send('Erro no servidor');
-        if (!user) return res.status(404).send('User não encontrado');
-        console.log(user);
-        console.log(user.userName);
-        console.log(req.body);
-        //var passwordIsValid = bcrypt.compareSync(req.body.password, user.pass);
-        if (req.body.password != user.password) return res.status(401).send({ auth: false, token: null });
-
+        if (err) return res.status(500).send('Error on the server.');
+        if (!user) return res.status(404).send('No user found.');
+        
+        // check if the password is valid
+        var passwordIsValid = bcrypt.compareSync(req.body.password, user.password);
+        
+        if (!passwordIsValid) return res.status(401).send({ auth: false, token: null });
+        
+        // if user is found and password is valid
+        // create a token
         var token = jwt.sign({ id: user._id }, authconfig.secret, {
-            expiresIn: 86400 // expira em 24 horas
+        expiresIn: 86400 // expires in 24 hours
         });
+        // return the information including token as JSON
+        res.status(200).send({ auth: true, token: token, userName: user.userName});
+  });
 
-        res.json({ auth: true, token: token, userName: user.userName, email: user.email });
-
-    });
 }
 
 authController.logout = function (req, res) {
